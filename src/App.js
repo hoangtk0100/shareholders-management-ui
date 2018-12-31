@@ -14,22 +14,22 @@ const DefaultLayout = Loadable({
 
 // Pages
 const Login = Loadable({
-  loader: () => import('./views/Pages/Login'),
+  loader: () => import('./views/Login'),
   loading
 });
 
 const Register = Loadable({
-  loader: () => import('./views/Pages/Register'),
+  loader: () => import('./views/Register'),
   loading
 });
 
 const Page404 = Loadable({
-  loader: () => import('./views/Pages/Page404'),
+  loader: () => import('./views/Page404'),
   loading
 });
 
 const Page500 = Loadable({
-  loader: () => import('./views/Pages/Page500'),
+  loader: () => import('./views/Page500'),
   loading
 });
 
