@@ -1,141 +1,244 @@
 import fetch from 'cross-fetch';
-import { API_CONST } from '../API';
-import { tokenUtil } from '../utils/token';
+import { API_URLS } from '../APIs';
 
-const fetchUserDetail = userUid => {
+// Set default url
+let url = '';
+
+// Create a new person
+const create = person => {
+    var postObject = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(person)
+    };
+
+    url = API_URLS.PERSON_URL_CREATE;
+    return fetch(url, postObject)
+                .then(responseData => {
+                    if (responseData.status >= 400) {
+                        throw new Error(responseData.statusText);
+                    }
+
+                    return responseData.json();
+                })
+                .then(data => {
+                    if (data.errorCode === 0) {
+                        return data;
+                    }
+                })
+                .catch(err => {
+                    throw new Error(err);
+                });
+}
+
+// Update person
+const update = person => {
+    var putObject = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(person)
+    };
+
+    url = API_URLS.PERSON_URL_UPDATE;
+    return fetch(url, putObject)
+                .then(responseData => {
+                    if (responseData.status >= 400) {
+                        throw new Error(responseData.statusText);
+                    }
+
+                    return responseData.json();
+                })
+                .then(data => {
+                    if (data.errorCode === 0) {
+                        return data;
+                    }
+                })
+                .catch(err => {
+                    throw new Error(err);
+                });
+}
+
+// Deactivate person
+const deactivate = id => {
+    var putObject = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    url = API_URLS.PERSON_URL_DEACTIVATE(id);
+    return fetch(url, putObject)
+                .then(responseData => {
+                    if (responseData.status >= 400) {
+                        throw new Error(responseData.statusText);
+                    }
+
+                    return responseData.json();
+                })
+                .then(data => {
+                    if (data.errorCode === 0) {
+                        return data;
+                    }
+                })
+                .catch(err => {
+                    throw new Error(err);
+                });
+}
+
+// Retrieve all persons
+const retrieveAll = () => {
+    var getObject = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    url = API_URLS.PERSON_URL_ALL;
+    return fetch(url, getObject)
+                .then(responseData => {
+                    if (responseData.status >= 400) {
+                        throw new Error(responseData.statusText);
+                    }
+
+                    return responseData.json();
+                })
+                .then(data => {
+                    if (data.errorCode === 0) {
+                        return data;
+                    }
+                })
+                .catch(err => {
+                    throw new Error(err);
+                });
+}
+
+// Retrieve person by id
+const retrieveById = id => {
+    var getObject = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    url = API_URLS.PERSON_URL_RETRIEVE_BY_ID(id);
+    return fetch(url, getObject)
+                .then(responseData => {
+                    if (responseData.status >= 400) {
+                        throw new Error(responseData.statusText);
+                    }
+
+                    return responseData.json();
+                })
+                .then(data => {
+                    if (data.errorCode === 0) {
+                        return data;
+                    }
+                })
+                .catch(err => {
+                    throw new Error(err);
+                });
+}
+
+// Retrieve person by username
+const retrieveByUsername = username => {
+    var getObject = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    url = API_URLS.PERSON_URL_RETRIEVE_BY_USERNAME(username);
+    return fetch(url, getObject)
+                .then(responseData => {
+                    if (responseData.status >= 400) {
+                        throw new Error(responseData.statusText);
+                    }
+                    
+                    return responseData.json();
+                })
+                .then(data => {
+                    if (data.errorCode === 0) {
+                        return data;
+                    }
+                })
+                .catch(err => {
+                    throw new Error(err);
+                });
+}
+
+// Retrieve person by personal id
+const retrieveByPersonalId = personalId => {
    var getObject = {
-      method: 'GET',
-      headers: {
-         'Content-Type': 'application/json'
-      }
+       method: 'GET',
+       headers: {
+           'Content-Type': 'application/json'
+       }
    };
-   let url = API_CONST.USER_DETAIL_URL(userUid);
-   tokenUtil.updateOrCreateHeader(getObject);
+
+   url = API_URLS.PERSON_URL_RETRIEVE_BY_PERSONAL_ID(personalId);
    return fetch(url, getObject)
-      .then(responseData => {
-         tokenUtil.checkAuthorizedStatus(responseData);
-         if (responseData.status >= 400) {
-            throw new Error(responseData.statusText);
-         }
-         return responseData.json();
-      })
-      .then(data => {
-         return data;
-      })
-      .catch(err => {
-         return err;
-      });
+               .then(responseData => {
+                   if (responseData.status >= 400) {
+                       throw new Error(responseData.statusText);
+                   }
+                   
+                   return responseData.json();
+               })
+               .then(data => {
+                   if (data.errorCode === 0) {
+                       return data;
+                   }
+               })
+               .catch(err => {
+                   throw new Error(err);
+               });
 }
 
-const loadPostList = userUid => {
+// Retrieve person by phone number
+const retrieveByPhoneNumber = phoneNumber => {
    var getObject = {
-      method: 'GET',
-      headers: {
-         'Content-Type': 'application/json'
-      }
+       method: 'GET',
+       headers: {
+           'Content-Type': 'application/json'
+       }
    };
-   let url = API_CONST.POST_LIST_URL(userUid);
-   tokenUtil.updateOrCreateHeader(getObject);
+
+   url = API_URLS.PERSON_URL_RETRIEVE_BY_PHONE_NUMBER(phoneNumber);
    return fetch(url, getObject)
-      .then(responseData => {
-         tokenUtil.checkAuthorizedStatus(responseData);
-         if (responseData.status >= 400) {
-            throw new Error(responseData.statusText);
-         }
-         return responseData.json();
-      })
-      .then(data => {
-         return data.data;
-      })
-      .catch(err => {
-         return err;
-      });
-}
-
-function loadUserList(){
-   console.log("API load user");
-   let getObject = {
-      method: 'GET',
-      headers:{
-         'Content-Type': 'application/json',
-      }
-   };
-   tokenUtil.updateOrCreateHeader(getObject);
-
-   return fetch(API_CONST.USER_LIST_URL, getObject)
-      .then(responseData => {
-         tokenUtil.checkAuthorizedStatus(responseData);
-         if (responseData.status >= 400) {
-               throw new Error("Bad response from server");
-         }
-         return responseData.json(); // This is a MUST, do not remove.
-      })
-      .then(data => {
-         if (data.errorCode === 0) {
-               return data.data;
-         }
-      })
-      .catch(err => {
-         throw new Error(err);
-      });
-}
-
-function fetchUserDetailTest(uid){
-   let getObject = {
-      method: 'GET',
-      headers:{
-         'Content-Type': 'application/json',
-      }
-   }
-   tokenUtil.updateOrCreateHeader(getObject);
-   return fetch(API_CONST.USER_DETAIL_URL(uid), getObject)
-      .then(responseData => {
-         tokenUtil.checkAuthorizedStatus(responseData);
-         if(responseData.status >= 400){
-            throw new Error('Bad response from server');
-         }
-         return responseData.json();
-      })
-      .then(data => {
-         if(data.errorCode === 0){
-            return data.data;
-         }
-      })
-      .catch(err => {
-         throw new Error(err);
-      });
-}
-
-function deleteUser(uid){
-   let getObject = {
-      method: 'GET',
-      headers:{
-         'Content-Type': 'application/json',
-      }
-   }
-   tokenUtil.updateOrCreateHeader(getObject);
-   return fetch(API_CONST.DELETE_USER_URL(uid), getObject)
-      .then(responseData => {
-         tokenUtil.checkAuthorizedStatus(responseData);
-         if(responseData.status >= 400){
-            throw new Error('Bad response from server');
-         }
-         return responseData.json();
-      })
-      .then(data => {
-         if(data.errorCode === 0){
-            return data.data;
-         }
-      })
-      .catch(err => {
-         throw new Error(err);
-      });
+               .then(responseData => {
+                   if (responseData.status >= 400) {
+                       throw new Error(responseData.statusText);
+                   }
+                   
+                   return responseData.json();
+               })
+               .then(data => {
+                   if (data.errorCode === 0) {
+                       return data;
+                   }
+               })
+               .catch(err => {
+                   throw new Error(err);
+               });
 }
 
 export const userService = {
-   fetchUserDetail,
-   loadUserList,
-   fetchUserDetailTest,
-   loadPostList,
-   deleteUser
-}
+    create,
+    update,
+    deactivate,
+    retrieveAll,
+    retrieveById,
+    retrieveByUsername,
+    retrieveByPersonalId,
+    retrieveByPhoneNumber
+ }

@@ -6,14 +6,23 @@ import {
 
 import usersData from './UsersData'
 
+let isValid = 'valid';
 class User extends Component {
+  // isValid = (props) => {
+  //   const {password, rePassword} = props;
+  //   // if()
+  //   if(password !== rePassword) {
+  //     return 'invalid';
+  //   } else {
+  //     return 'valid'
+  //   }
+  // }
+  
 
   render() {
-
     const user = usersData.find(user => user.id.toString() === this.props.match.params.id)
-
     const userDetails = user ? Object.entries(user) : [['id', (<span><i className="text-muted icon-ban"></i> Not found</span>)]]
-
+    
     return (
       <div className="animated fadeIn">
         <Row>
@@ -75,12 +84,12 @@ class User extends Component {
               <CardBody>
                 <FormGroup>
                   <Label htmlFor="inputIsValid">New Password</Label>
-                  <Input type="text" valid id="newpassword" />
+                  <Input type={`"text" ${isValid} id="newpassword" `} />
                   <FormFeedback valid>Cool! Input is valid</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="inputIsInvalid">Re-enter Password</Label>
-                  <Input type="text" invalid id="repassword" />
+                  <Input type="text" invalid id="repassword"  />
                   <FormFeedback>Houston, we have a problem...</FormFeedback>
                 </FormGroup>
               </CardBody>

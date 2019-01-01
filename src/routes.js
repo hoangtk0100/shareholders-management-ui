@@ -47,7 +47,7 @@ import DefaultLayout from './containers/DefaultLayout';
 //   loader: () => import('./views/Profits'),
 // });
 
-// const Refferals = Loadable({
+// const Referrals = Loadable({
 //   loader: () => import('./views/Referrals'),
 // });
 
@@ -61,8 +61,11 @@ const Dashboard = React.lazy(() => import('./views/Dashboard'));
 
 // Admin path routes
 const AdminDashboard = React.lazy(()=> import('./views/Admin/Dashboard'));
-const Users =React.lazy(() => import('./views/Admin/Users/Users'));
+const Users =React.lazy(() => import('./views/Admin/Users/Users01'));
 const User = React.lazy(() => import('./views/Admin/Users/User'));
+const Profile = React.lazy(() => import('./views/Profile/Profile2'));
+const Referrals = React.lazy(() => import('./views/Referrals/Referrals'));
+// const UserReferrals = React.lazy(() => import('./views/Referrals/Users'));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout }, 
@@ -71,6 +74,8 @@ const routes = [
   { path: '/admin/dashboard', name: 'Dashboard', component: AdminDashboard },
   { path: '/admin/users', exact: true,  name: 'Users', component: Users },
   { path: '/admin/users/:id', exact: true, name: 'User Details', component: User },
+  { path: '/profile/:id', exact: true, name: 'Profile', component: Profile },
+  { path: '/referrals', exact: true, name: 'Profile', component: Referrals },
 ];
 
 export default routes;
