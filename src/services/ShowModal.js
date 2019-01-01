@@ -2,10 +2,6 @@ import React, { } from 'react';
 import CommonModal from '../views/CustomModals/CommonModal'
 import ReactDOM from 'react-dom';
 
-/*
-    * This file contains util functions to work with modals: showError, showInfo, showSucess...
-    * Created by Luan on 2018/08/08
-*/
 /**
  * 
  * @param {*this is message content} msg 

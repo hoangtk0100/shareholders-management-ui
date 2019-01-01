@@ -19,6 +19,12 @@ import navigation from '../../_defaultNav';
 // routes config
 import routes from '../../routes';
 
+////
+// import Search from "@material-ui/icons/Search";
+// // core components
+// import CustomInput from "../../components/CustomInput/CustomInput.jsx";
+// import Button from "../../components/CustomButtons/Button.jsx";
+
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
@@ -32,7 +38,12 @@ class DefaultLayout extends Component {
     this.props.history.push('/login')
   }
 
+  state = {
+    open: false
+  };
+
   render() {
+    // const { classes } = this.props;
     return (
       <div className="app">
         <AppHeader fixed>
@@ -45,6 +56,20 @@ class DefaultLayout extends Component {
             <AppSidebarHeader />
             <AppSidebarForm />
             <Suspense>
+            {/* <CustomInput
+            formControlProps={{
+              // className: classes.margin + " " + classes.search
+            }}
+            inputProps={{
+              placeholder: "Search",
+              inputProps: {
+                "aria-label": "Search"
+              }
+            }}
+          />
+          <Button color="white" aria-label="edit" justIcon round>
+            <Search />
+          </Button> */}
             <AppSidebarNav navConfig={navigation} {...this.props} />
             </Suspense>
             <AppSidebarFooter />

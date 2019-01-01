@@ -1,0 +1,18 @@
+export const routeConstants = {
+    ROUTE_DASHBOARD: '/',
+    ROUTE_REFERRALS: '/referrals',
+    ROUTE_PROFILE: '/profile/:id',
+    ROUTE_SHARES: '/shares',
+    ROUTE_PROFITS: '/profits',
+    ROUTE_ADMIN_DASHBOARD: '/admin/dashboard',
+    ROUTE_ADMIN_USERS: '/admin/persons',
+    ROUTE_ADMIN_USER_DETAIL: '/admin/person/:id',
+    ROUTE_ADMIN_ROLES: '/admin/roles/:userid/posts',
+    ROUTE_ADMIN_SHARES: '/admin/person/:userid/videos',
+    ROUTE_ADMIN_PROFITS: '/admin/person/:userid/albums',
+    ROUTE_ADMIN_STAGE_QUARTERS: '/admin/regions',
+    ROUTE_ADMIN_: '/admin/region/:id',
+    ROUTE_ADMIN_REGION_PLACES: '/admin/region/:regionid/places',
+    ROUTE_ADMIN_REGION_PLACE_DETAIL: '/admin/region/:regionid/place/:id',
+    ROUTE_ADMIN_ADD_PLACE: '/admin/addPlace',
+};

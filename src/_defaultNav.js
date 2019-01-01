@@ -38,7 +38,7 @@ export default {
     },
     {
       name: 'PROFILE',
-      url: '/profile',
+      url: '/profile/0',
       icon: 'cui-settings icons'
     },
     {
