@@ -19,7 +19,7 @@ export default {
       icon: 'cui-people icons'
     },
     {
-      name: 'STAGES - QUARTERS',
+      name: 'STAGES-QUARTERS',
       url: '/admin/stagesQuarters',
       icon: 'icon-star'
     },
@@ -35,7 +35,7 @@ export default {
     },
     {
       name: 'REFERRALS', // include stage, quarter, person-quarter
-      url: '/referrals',
+      url: '/admin/referrals',
       icon: 'cui-people icons'
     },
     {
@@ -53,10 +53,10 @@ export default {
     },
     {
       name: 'PROFILE',
-      url: '/profile',
+      url: '/admin/profile',
       icon: 'cui-settings icons'
     },
-    { 
+    {
       name: 'LOG OUT',
       url: '/login',
       icon: 'cui-account-logout icons'

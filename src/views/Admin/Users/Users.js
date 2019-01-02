@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Badge, Card, CardBody, CardHeader, Col, Row, Table,
-  DropdownItem, DropdownMenu, DropdownToggle, InputGroupAddon,
-  ButtonDropdown, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+  DropdownItem, DropdownMenu, DropdownToggle, InputGroupAddon, ButtonGroup,
+  ButtonDropdown, Pagination, PaginationItem, PaginationLink, Dropdown
+} from 'reactstrap';
 import usersData from './UsersData'
 
 //  const constructor(props) => {
@@ -24,7 +25,7 @@ import usersData from './UsersData'
 
 function UserRow(props) {
   const user = props.user
-  const userLink = `/admin/users/${user.id}`
+  const userLink = `/admin/user/${user.id}`
 
   const getBadge = (status) => {
     return status === 'Active' ? 'success' :
@@ -67,16 +68,30 @@ function UserRow(props) {
             </DropdownMenu>
           </ButtonDropdown>
         </InputGroupAddon>
+        {/* <ButtonGroup className="float-right">
+          <Dropdown id='card3'
+          // isOpen={this.state.card3} toggle={() => { this.setState({ card3: !this.state.card3 }); }}
+          >
+            <DropdownToggle caret className="p-0" color="gray" >Action
+                      <i className="icon-settings"></i>
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>Info</DropdownItem>
+              <DropdownItem>Edit</DropdownItem>
+              <DropdownItem>Delete</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </ButtonGroup> */}
       </td>
     </tr>
   )
 }
 
-class Users01 extends Component {
+class Users extends Component {
 
   render() {
     const userList = usersData.filter((user) => user.id < 10)
-    
+
     return (
       <div className="animated fadeIn">
         <Row>
@@ -104,12 +119,12 @@ class Users01 extends Component {
                     )}
                   </tbody>
                 </Table>
-                <Row style={{marginTop: 15}} end="md"            >
+                <Row style={{ marginTop: 15 }} end="md"            >
                   <Col md={7}></Col>
                   <Col //style={{display: block}}
-                  // xs={6} md={6} lg={6} sm={6}
-                  // xsOffset={9} xs={3} xl={3}
-                  md={5} 
+                    // xs={6} md={6} lg={6} sm={6}
+                    // xsOffset={9} xs={3} xl={3}
+                    md={5}
                   >
                     <Pagination>
                       {/* <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>  */}
@@ -130,4 +145,4 @@ class Users01 extends Component {
   }
 }
 
-export default Users01;
+export default Users;

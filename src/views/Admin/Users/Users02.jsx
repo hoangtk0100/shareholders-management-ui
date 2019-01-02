@@ -16,7 +16,7 @@ import IconButton from "../../../components/CustomButtons/IconButton";
 
 import { dataTable } from "../../../variables/general.jsx";
 
-class Users extends React.Component{
+class Users02 extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -88,7 +88,7 @@ class Users extends React.Component{
   render(){
     return (
       <GridContainer>
-        <ItemGrid xs={12}>
+        <ItemGrid xs={6}>
           <IconCard
             icon={Assignment}
             title="React Table"
@@ -133,4 +133,4 @@ class Users extends React.Component{
   }
 }
 
-export default Users;
+export default Users02;

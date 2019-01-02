@@ -3,7 +3,7 @@ export * from './RoleService';
 export * from './UserService';
 export * from './StageService';
 export * from './QuarterService';
-export * from './ShareService';
+export * from './SharePeriodService';
 export * from './ActivityService';
 export * from './ProfitService';
 export * from './PersonProfitService';

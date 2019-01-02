@@ -7,7 +7,7 @@ import {
 import usersData from './UsersData'
 
 let isValid = 'valid';
-class Profile extends Component {
+class Profile02 extends Component {
   // isValid = (props) => {
   //   const {password, rePassword} = props;
   //   // if()
@@ -105,4 +105,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default Profile02;

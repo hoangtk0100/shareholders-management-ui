@@ -1,81 +1,91 @@
 import React from 'react';
 import DefaultLayout from './containers/DefaultLayout';
-// import AdminLayout from './containers/AdminLayout';
-// import Loadable from 'react-loadable'
+import Loadable from 'react-loadable';
+import './App.scss';
 
-// const AdminDashboard = Loadable({
-//   loader: () => import('./views/Admin/Dashboard'),
-// });
+const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
-// const Users = Loadable({
-//   loader: () => import('./views/Admin/Users/Users'),
-// });
+const AdminDashboard = Loadable({
+  loader: () => import('./views/Admin/Dashboard'),
+  loading: loading,
+});
 
-// const User = Loadable({
-//   loader: () => import('./views/Admin/Users/User'),
-// });
+const Users = Loadable({
+  loader: () => import('./views/Admin/Users'),
+  loading: loading,
+});
+
+const User = Loadable({
+  loader: () => import('./views/Admin/Users/User'),
+  loading: loading,
+});
 
 // const StagesQuartes = Loadable({
 //   loader: () => import('./views/Admin/StagesQuarters'),
+//   loading: loading,
 // });
 
 // const AdminShares = Loadable({
 //   loader: () => import('./views/Admin/Shares'),
+// loading: loading,
 // });
 
 // const AdminProfits = Loadable({
 //   loader: () => import('./views/Admin/Profits'),
+// loading: loading,
 // });
 
-// const AdminReferrals = Loadable({
-//   loader: () => import('./views/Referrals'),
-// });
+const AdminReferrals = Loadable({
+  loader: () => import('./views/Referrals/Referrals'),
+  loading: loading,
+});
 
 // const Roles = Loadable({
 //   loader: () => import('./views/Admin/Roles'),
+// loading: loading,
 // });
 
-// const Dashboard = Loadable({
-//   loader: () => import('./views/Dashboard'),
-// });
+const AdminProfile = Loadable({
+  loader: () => import('./views/Profile/Profile'),
+  loading: loading,
+});
+
+const Dashboard = Loadable({
+  loader: () => import('./views/Dashboard'),
+  loading: loading,
+});
 
 // const Shares = Loadable({
 //   loader: () => import('./views/Shares'),
+// loading: loading,
 // });
 
 // const Profits = Loadable({
 //   loader: () => import('./views/Profits'),
+// loading: loading,
 // });
 
-// const Referrals = Loadable({
-//   loader: () => import('./views/Referrals'),
-// });
+const Referrals = Loadable({
+  loader: () => import('./views/Referrals/Users'),
+  loading: loading,
+});
 
-// const Profile = Loadable({
-//   loader: () => import('./views/Profile'),
-// });
+const Profile = Loadable({
+  loader: () => import('./views/Profile/Profile'),
+  loading: loading,
+});
 
-const Dashboard = React.lazy(() => import('./views/Dashboard'));
-// const Users = React.lazy(() => import('./views/Admin/Users/Users'));
-// const User = React.lazy(() => import('./views/Admin/Users/User'));
-
-// Admin path routes
-const AdminDashboard = React.lazy(()=> import('./views/Admin/Dashboard'));
-const Users =React.lazy(() => import('./views/Admin/Users/Users01'));
-const User = React.lazy(() => import('./views/Admin/Users/User'));
-const Profile = React.lazy(() => import('./views/Profile/Profile2'));
-const Referrals = React.lazy(() => import('./views/Referrals/Referrals'));
-// const UserReferrals = React.lazy(() => import('./views/Referrals/Users'));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout }, 
-  // { path: '/admin', exact: true, name: 'Admin', component: AdminLayout },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/admin/dashboard', name: 'Dashboard', component: AdminDashboard },
   { path: '/admin/users', exact: true,  name: 'Users', component: Users },
-  { path: '/admin/users/:id', exact: true, name: 'User Details', component: User },
-  { path: '/profile/:id', exact: true, name: 'Profile', component: Profile },
-  { path: '/referrals', exact: true, name: 'Profile', component: Referrals },
+  { path: '/admin/user/:id', exact: true, name: 'User Details', component: User },
+  { path: '/profile', exact: true, name: 'Profile', component: Profile },
+  { path: '/referrals', exact: true, name: 'Referrals', component: Referrals },
+  { path: '/admin/referrals', exact: true, name: 'Admin Referrals', component: AdminReferrals },
+  { path: '/admin/profile', exact: true, name: 'Admin Profile', component: AdminProfile },
 ];
 
 export default routes;

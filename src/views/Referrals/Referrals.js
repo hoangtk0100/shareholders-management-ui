@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Col, Row } from 'reactstrap';
-import Users from '../Admin/Users/Users01';
+import Users from '../Admin/Users/Users';
 
 
 class Referrals extends Component {
